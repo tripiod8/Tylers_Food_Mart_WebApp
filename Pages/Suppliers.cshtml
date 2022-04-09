@@ -1,0 +1,21 @@
+﻿@page
+@model Tylers_Food_Mart_WebApp.Pages.SuppliersModel
+@{
+    ViewData["Title"] = "Suppliers";
+}
+
+<div class="row justify-content-center" style="">
+    @foreach (var item in Model._Suppliers)
+{
+        <div class="card m-2" style="width: 18rem;">
+            <img class="card-img-top" src="img/@(item.SupplierImage)" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@item.Company</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                    content.</p>
+                <a class="btn btn-primary" asp-page="/Supplier" asp-route-id="@(item.SupplierID)">Go somewhere</a>
+            </div>
+        </div>
+  
+} 
+</div>

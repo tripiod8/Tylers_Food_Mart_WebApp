@@ -1,0 +1,15 @@
+﻿@page
+@model Tylers_Food_Mart_WebApp.Pages.SupplierModel
+@{
+    ViewData["Title"] = "Supplier";
+}
+
+<div style="width: fit-content;">
+    <h1 class="font-family"><span style="font-size: larger;">ABOUT</span> <span style="font-size: larger; font-weight: lighter;">@Model._Supplier.Company</span></h1>
+    <div class="mt-5" style="text-align: right;">
+        <h3 class="font-family">@Model._Supplier.FirstName @Model._Supplier.LastName</h3>
+        <h6 class="font-family">Regional Manager</h6>
+        <h6 class="font-family" style="font-weight: lighter;">@Model._Supplier.City, @Model._Supplier.State</h6>
+        
+    </div>
+</div>
