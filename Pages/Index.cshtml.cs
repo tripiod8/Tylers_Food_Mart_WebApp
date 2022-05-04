@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Tylers_Food_Mart_WebApp.Pages;
 
+[AllowAnonymous]
 public class IndexModel : PageModel
 {
     private readonly ILogger<IndexModel> _logger;

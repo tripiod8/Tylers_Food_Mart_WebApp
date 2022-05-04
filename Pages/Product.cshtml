@@ -1,0 +1,38 @@
+﻿@page 
+@model Tylers_Food_Mart_WebApp.Pages.ProductModel
+@{
+    ViewData["Title"] = "Suppliers";
+}
+
+<div class="container">
+    <div class="my-5" style="width: fit-content;">
+        @if(Model._addToCart)
+        {
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+                <strong>Holy guacamole!</strong> You have @(Model._qtyCart) @(Model._Product.ProductName)@(@Model._qtyCart > 1 ? "s" : "") to your cart!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }     
+                @if(Model._lowStock)
+        {
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Holy guacamole!</strong> Not enough in stock!
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }    
+        <h2 class="font-family">@Model._Product.ProductName</h2>
+        <h6 class="font-family">@Model._Product.ProductCode</h6>
+    </div>
+    <form method="post">
+        <div style="width: fit-content;">
+            <div class="d-flex align-items-center">
+                <span class="font-family">Quantity Amount:</span> <input type="number" class="w-25 form-control mx-2" name="qtyCart">
+                <input type="hidden" name="productName" value="@(Model._Product.ProductName)">
+                <input type="hidden" name="currentQty" value="@(Model._qtyCart)">
+                <input type="hidden" name="currentStock" value="@(Model._Product.ReorderLevel)">
+                <input type="submit" class="btn btn-primary" value="Add To Cart">
+            </div>
+        </div>
+    </form>
+    <span class="font-family">In Stock: <b>@Model._Product.ReorderLevel</b></span>
+</div>

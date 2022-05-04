@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 using Tylers_Food_Mart_WebApp.Data;
 
 namespace Tylers_Food_Mart_WebApp.Pages
 {
+    [AllowAnonymous]
     public class SuppliersModel : PageModel
     {
         private readonly ILogger<SuppliersModel> _logger;

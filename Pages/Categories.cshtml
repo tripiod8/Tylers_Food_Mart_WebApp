@@ -1,0 +1,21 @@
+﻿@page
+@model Tylers_Food_Mart_WebApp.Pages.CategoriesModel
+@{
+}
+
+@* @foreach (var item in Model.Categories)
+{
+    <h6>@Html.DisplayFor(modelItem => item)</h6>
+} *@
+<div class="container">
+    <ul class="list-group my-5" style="width: fit-content;">
+        @foreach (var item in Model._Categories)
+        {
+            <li class="list-group-item"><a asp-page="/CategoryProducts" asp-route-id="@(item.CategoryID)">@item.CategoryName</a></li>
+        } 
+    </ul>
+</div>
+
+
+
+

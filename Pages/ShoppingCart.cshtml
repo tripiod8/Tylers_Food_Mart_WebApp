@@ -1,0 +1,69 @@
+﻿@page
+@model Tylers_Food_Mart_WebApp.Pages.ShoppingCartModel
+@{
+
+}
+@if(Model._cartEmpty)
+{
+  <div style="text-align: center;">
+    <h1>Cart is Empty!</h1>
+  </div>
+}
+else{
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Code</th>
+      <th scope="col">Name</th>
+      <th scope="col">Price</th>
+      <th scope="col">Cart Amount</th>
+      <th scope="col">Subtotal</th>
+      <th scope="col">Action</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model._CookieProducts)
+    {
+      <tr>
+        <th scope="row">@item.ProductCode</th>
+        <td>@item.ProductName</td>
+        <td>@item.StandardCost?.ToString("C")</td>
+        <td>@Model._CartQty[Model._CookieProducts.IndexOf(item)]</td>
+        <td>@Model._Subtotal[Model._CookieProducts.IndexOf(item)].ToString("C")</td>
+        <td><a class="btn btn-warning btn-small" asp-page="/Product" asp-route-id="@(item.ProductID)">Update</a></td>
+        <td><form method="post"><input type="hidden" name="productName" value="@(item.ProductName)"/><button type="submit" class="btn btn-danger" asp-page-handler="delete">Delete</button></form></td>
+      </tr>
+    }
+  </tbody>
+</table>
+<form method="post">
+  @foreach (var item in Model._CookieProducts)
+  {
+    <input type="hidden" name="@(item.ProductCode)" value="@(item.ProductCode)" />
+    <input type="hidden" name="@(item.ProductCode)Qty" value="@(Model._CartQty[Model._CookieProducts.IndexOf(item)])" />
+  }
+  <input type="hidden" name="empName" value="@(User.Identity.Name)">
+  <input type="submit" class="btn btn-success" style="float: right;" value="Purchase">
+</form>
+}
+
+<table class="table table-striped" style="width: fit-content;">
+  <thead>
+    <tr>
+      <th scope="col">Code</th>
+      <th scope="col">Target</th>
+      <th scope="col">NWT Inventory</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var item in Model._AllProducts)
+    {
+      <tr>
+        <th scope="row">@item.ProductCode</th>
+        <td>@item.TargetLevel</td>
+        <td>@item.AvailableQty</td>
+      </tr>
+    }
+  </tbody>
+</table>
