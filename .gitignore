@@ -1,8 +1,7 @@
-./.vscode
-./bin
-./obj
-./publish
-./app.db
+/.vscode
+/bin
+/obj
+/publish
 ./appsettings.json
 ./appsettings.Production.json
 ./ScaffoldingReadMe.txt
